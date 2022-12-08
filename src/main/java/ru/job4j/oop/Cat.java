@@ -2,18 +2,18 @@ package ru.job4j.oop;
 
 public class Cat {
 
-    private String food; // Создаём поля обьекта
+    private String food; // Создаём поля обьекта.
     private String name;
 
     public void show() {
-        System.out.println(this.name + " " + this.food); // Метод который будет выводить содержимое поле обьекта
+        System.out.println(this.name + " " + this.food); // Метод который будет выводить содержимое поле обьекта.
     }
 
     public void giveNick(String nick) {
         this.name = nick;
     }
 
-    public void eat(String meat) { // Записываем данные
+    public void eat(String meat) { // Записываем данные.
         this.food = meat;
     }
 
