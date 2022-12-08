@@ -6,7 +6,7 @@ public class Cat {
     private String name;
 
     public void show() {
-        System.out.println(this.name + " " + this.food); // Метод который будет выводить содержимое поле обьекта.
+        System.out.println(this.name + " кушал " + this.food); // Метод который будет выводить содержимое поле обьекта.
     }
 
     public void giveNick(String nick) {
@@ -20,12 +20,12 @@ public class Cat {
     public static void main(String[] args) {
         System.out.println("There are gav's food.");
         Cat gav = new Cat();
-        gav.eat("kotleta");
+        gav.eat("Котелту");
         gav.giveNick("Гав");
         gav.show();
         System.out.println("There are black's food.");
         Cat black = new Cat();
-        black.eat("fish");
+        black.eat("Рыбу");
         black.giveNick("Черныш");
         black.show();
     }
