@@ -13,7 +13,7 @@ public class Cat {
         this.name = nick;
     }
 
-    public void eat(String meat) { // Записываем данные.
+    public void eat(String meat) {
         this.food = meat;
     }
 
@@ -25,7 +25,7 @@ public class Cat {
         gav.show();
         System.out.println("There are black's food.");
         Cat black = new Cat();
-        black.eat("Рыбку");
+        black.eat("Рыбу");
         black.giveNick("Черныш");
         black.show();
     }
