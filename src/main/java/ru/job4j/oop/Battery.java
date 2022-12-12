@@ -12,7 +12,8 @@ public class Battery {
         return load;
     }
 
-    public public void exchange(Battery another) {
-
+    public void exchange(Battery another) {
+        another.load = this.load + another.load;
+        this.load = 0;
     }
 }
