@@ -1,5 +1,3 @@
-package ru.job4j.oop;
-
 public class Error {
 
     public boolean active;
