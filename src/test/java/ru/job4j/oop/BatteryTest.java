@@ -1,11 +1,9 @@
 package ru.job4j.oop;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static org.junit.Assert.*;
-
-public class BatteryTest extends TestCase {
+public class BatteryTest {
 
     @Test
     public void whenThis30Another50ThenAnotherLoadEqual80() {
