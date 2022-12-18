@@ -7,6 +7,6 @@ public class DummyDic {
 
     public static void main(String[] args) {
         DummyDic test = new DummyDic();
-        System.out.println("Cat " + test.engToRus());
+        System.out.println("Cat " + test.engToRus("helicopter"));
     }
 }
