@@ -1,8 +1,8 @@
 package ru.job4j.pojo;
 
 public class Book {
-    int pages;
-    String name;
+    private int pages;
+    private String name;
 
     public Book(String name, int pages) {
         this.name = name;
