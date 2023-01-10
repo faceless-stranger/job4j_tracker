@@ -6,6 +6,7 @@ public class College {
         student.setName("Vlad");
         student.setGroup("build");
         student.setDate("11.11.11");
-        System.out.println("Имя " + student.getName() + System.lineSeparator() + "Группа  " + student.getGroup() + System.lineSeparator() + "Дата поступления  " + student.getDate());
+        System.out.println("Имя " + student.getName() + System.lineSeparator() + "Группа  " + student.getGroup()
+                + System.lineSeparator() + "Дата поступления  " + student.getDate());
     }
 }
