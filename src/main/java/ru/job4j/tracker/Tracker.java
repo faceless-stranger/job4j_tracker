@@ -1,14 +1,20 @@
 package ru.job4j.tracker;
 
+import java.util.Arrays;
+
 public class Tracker {
     private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
 
-    public Item add(Item item) {
+    public Item add(Item item) { //Добавление заявки
         item.setId(ids++);
         items[size++] = item;
         return item;
+    }
+
+    public Item[] findAll() {
+        return Arrays.copyOf(items, size);
     }
 
     public Item findById(int id) {
@@ -21,5 +27,17 @@ public class Tracker {
             }
         }
         return rsl;
+    }
+
+    public Item[] findByName(String key) {
+        Item[] rsl = new Item[size];
+        int cloud = 0;
+        for (int index = 0; index < size; index++) {
+            if (items[index].getName().equals(key)) {
+               rsl[cloud] = items[index];
+               cloud++;
+            }
+        }
+        return Arrays.copyOf(rsl, size);
     }
 }
