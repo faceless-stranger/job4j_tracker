@@ -41,7 +41,7 @@ public class Tracker {
                cloud++;
             }
         }
-        return Arrays.copyOf(rsl, size);
+        return Arrays.copyOf(rsl, cloud);
     }
 
     public boolean replace(int id, Item item) {
