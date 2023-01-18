@@ -1,7 +1,6 @@
 package ru.job4j.poly;
 
 public class Bus implements Transport {
-    private int passengers;
 
     @Override
     public void drive() {
@@ -10,7 +9,7 @@ public class Bus implements Transport {
 
     @Override
     public void passengers(int count) {
-        this.passengers = count;
+
     }
 
     @Override
