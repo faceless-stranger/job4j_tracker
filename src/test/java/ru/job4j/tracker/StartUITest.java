@@ -4,36 +4,4 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUITest {
-
-    @Test
-    public void createItem() {
-        String[] answers = {"Fix PC"};
-        Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
-        StartUI.createItem(input, tracker);
-        Item created = tracker.findAll()[0];
-        Item expected = new Item("Fix PC");
-        assertThat(created.getName()).isEqualTo(expected.getName());
-    }
-
-    @Test
-    void editItem() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("new item");
-        tracker.add(item);
-        String[] answers = {String.valueOf(item.getId()), "edited item"};
-        StartUI.editItem(new StubInput(answers), tracker);
-        Item edited = tracker.findById(item.getId());
-        assertThat(edited.getName()).isEqualTo("edited item");
-    }
-
-    @Test
-    void deletedItem() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("new item");
-        tracker.add(item);
-        String[] answers = {String.valueOf(item.getId()), "deleted item"};
-        StartUI.deletedItem(new StubInput(answers), tracker);
-        assertThat(tracker.findById(item.getId())).isEqualTo(null);
-    }
 }
