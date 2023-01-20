@@ -1,9 +1,9 @@
 package ru.job4j.tracker;
+
 import org.junit.jupiter.api.Test;
-import junit.framework.TestCase;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StartUITest extends TestCase {
+class StartUITest {
 
     @Test
     public void createItem() {
@@ -17,7 +17,7 @@ public class StartUITest extends TestCase {
     }
 
     @Test
-    public void editItem() {
+    void editItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
@@ -25,5 +25,15 @@ public class StartUITest extends TestCase {
         StartUI.editItem(new StubInput(answers), tracker);
         Item edited = tracker.findById(item.getId());
         assertThat(edited.getName()).isEqualTo("edited item");
+    }
+
+    @Test
+    void deletedItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answers = {String.valueOf(item.getId()), "deleted item"};
+        StartUI.deletedItem(new StubInput(answers), tracker);
+        assertThat(tracker.findById(item.getId())).isEqualTo(null);
     }
 }
