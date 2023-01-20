@@ -16,4 +16,5 @@ public class Bus implements Transport {
     public float refuel(float count) {
         return count * 52.3F;
     }
+
 }
