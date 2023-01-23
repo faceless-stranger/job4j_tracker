@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUITest {
+
     @Test
     public void whenCreateItem() {
         Input in = new StubInput(
@@ -19,34 +20,33 @@ class StartUITest {
     }
 
     @Test
-    public void createItem() {
-        String[] answers = {"Fix PC"};
-        Input input = new StubInput(answers);
+    public void whenReplaceItem() {
         Tracker tracker = new Tracker();
-        StartUI.createItem(input, tracker);
-        Item created = tracker.findAll()[0];
-        Item expected = new Item("Fix PC");
-        assertThat(created.getName()).isEqualTo(expected.getName());
+        Item item = tracker.add(new Item("Cat"));
+        Input in = new StubInput(
+                new String[] {"0", "1", "No cat", "1"}
+        );
+        UserAction[] actions = {
+                new EditAction(),
+                new ExitAction()
+        };
+        new StartUI().init(in, tracker, actions);
+        assertThat(tracker.findAll()[0].getName()).isEqualTo("No cat");
     }
 
     @Test
-    void editItem() {
+    public void whenDeleteAction() {
         Tracker tracker = new Tracker();
-        Item item = new Item("new item");
-        tracker.add(item);
-        String[] answers = {String.valueOf(item.getId()), "edited item"};
-        StartUI.editItem(new StubInput(answers), tracker);
-        Item edited = tracker.findById(item.getId());
-        assertThat(edited.getName()).isEqualTo("edited item");
-    }
-
-    @Test
-    void deletedItem() {
-        Tracker tracker = new Tracker();
-        Item item = new Item("new item");
-        tracker.add(item);
-        String[] answers = {String.valueOf(item.getId())};
-        StartUI.deletedItem(new StubInput(answers), tracker);
+        Item item = tracker.add(new Item("Cat"));
+        Input in = new StubInput(
+                new String[] {"0", "1", "1"}
+        );
+        UserAction[] actions = {
+                new DeletedAction(),
+                new ExitAction()
+        };
+        new StartUI().init(in, tracker, actions);
         assertThat(tracker.findById(item.getId())).isNull();
     }
+
 }
