@@ -1,10 +1,17 @@
 package ru.job4j.tracker;
 
 public class StartUI {
+
+    private final Output out;
+
+    public StartUI(Output out) {
+        this.out = out;
+    }
+
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
         while (run) {
-            showMenu();
+            showMenu(actions);
             int select = input.askInt("Select: ");
             if (select < 0 || select >= actions.length) {
                 System.out.println("Wrong input, you can select: 0 .. " + (actions.length - 1));
@@ -15,23 +22,20 @@ public class StartUI {
         }
     }
 
-    private void showMenu() {
-        String[] menu = {
-                "Add new Item", "Show all items", "Edit item",
-                "Delete item", "Find item by id", "Find items by name",
-                "Exit Program"
-        };
-        for (int i = 0; i < menu.length; i++) {
-            System.out.println(i + ". " + menu[i]);
+    private void showMenu(UserAction[] actions) {
+        out.println("Menu.");
+        for (int index = 0; index < actions.length; index++) {
+            out.println(index + ". " + actions[index].name());
         }
     }
 
     public static void main(String[] args) {
-        Input input = new ValidateInput();
+        Output output = new ConsoleOutput();
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(), new ShowAllAction(), new EditAction(),
-                new DeletedAction(), new FindByIdAction(), new FindByNameAction(),
+        UserAction[] actions = {new CreateAction(output), new ShowAllAction(output), new EditAction(output),
+                new DeletedAction(output), new FindByIdAction(output), new FindByNameAction(output),
                 new ExitAction()};
-        new StartUI().init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
     }
 }
