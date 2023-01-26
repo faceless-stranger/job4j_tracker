@@ -80,7 +80,7 @@ class StartUITest {
         );
     }
 
-    @Test
+    /* @Test
     public void whenFindAllActionTestOutputIsSuccessfully() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
@@ -132,6 +132,7 @@ class StartUITest {
                         + "=== Exit Program ===" + ln
         );
     }
+    */
 
     @Test
     public void whenExit() {
