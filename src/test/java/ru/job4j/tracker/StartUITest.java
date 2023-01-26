@@ -26,7 +26,7 @@ class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Cat"));
         Input in = new StubInput(
-                new String[] {"0", "1", "No cat", "1"}
+                new String[] {"0", String.valueOf(item.getId()), "No cat", "1"}
         );
         UserAction[] actions = {
                 new EditAction(out),
