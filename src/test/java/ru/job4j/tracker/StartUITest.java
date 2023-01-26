@@ -150,12 +150,12 @@ class StartUITest {
         assertThat(out.toString()).isEqualTo(
                 "Menu:" + ln
                         + "0. Find item by id" + ln
-                        + "1. Exit" + ln
+                        + "1. Exit Program" + ln
                         + "=== Find item by id ===" + ln
                         + one + ln
                         + "Menu:" + ln
                         + "0. Find item by id" + ln
-                        + "1. Exit" + ln
+                        + "1. Exit Program" + ln
                         + "=== Exit Program ===" + ln
         );
     }
