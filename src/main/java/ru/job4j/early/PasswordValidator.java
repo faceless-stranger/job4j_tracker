@@ -15,10 +15,12 @@ public class PasswordValidator {
         if (password.equals(password.toUpperCase())) {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
-        if (isNotDigital(password)) {
+
+        String rsl = password;
+        if (checkLetter(rsl).equals("isNotDigital")) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
-        if (isNotSymbol(password)) {
+        if (checkLetter(rsl).equals("isNotSymbol")) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
         if (validPassword(password)) {
@@ -28,29 +30,25 @@ public class PasswordValidator {
         return password;
     }
 
-    public static boolean isNotDigital(String password) {
-        boolean rsl = true;
-        char[] array = password.toCharArray();
-        for (int i = 0; i < array.length; i++) {
-           if (Character.isDigit(array[i])) {
-              rsl = false;
-              break;
-           }
-        }
-        return rsl;
-    }
-
-    public static boolean isNotSymbol(String password) {
-        boolean rsl = true;
-        char[] array = password.toCharArray();
-        for (int i = 0; i < array.length; i++) {
-            char ch = array[i];
-            if (!Character.isDigit(array[i]) && !Character.isLetter(array[i])) {
-                rsl = false;
-                break;
+    public static String checkLetter(String password) {
+        boolean isNotDigital = false;
+        boolean isNotSymbol = false;
+        char[] arrayChar = password.toCharArray();
+        for (char index: arrayChar) {
+            if (Character.isDigit(index)) {
+                isNotDigital = true;
+            }
+            if (!Character.isDigit(index) && !Character.isLetter(index)) {
+                isNotSymbol = true;
             }
         }
-        return rsl;
+        if (!isNotDigital) {
+            return "isNotDigital";
+        }
+        if (!isNotSymbol) {
+            return "isNotSymbol";
+        }
+        return password;
     }
 
     public static boolean validPassword(String password) {
