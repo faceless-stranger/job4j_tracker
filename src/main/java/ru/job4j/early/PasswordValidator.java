@@ -26,6 +26,9 @@ public class PasswordValidator {
             if (!Character.isDigit(index) && !Character.isLetter(index)) {
                 isNotSymbol = true;
             }
+            if (isNotDigital && isNotSymbol) {
+                break;
+            }
         }
         if (!isNotDigital) {
             throw new IllegalArgumentException("Password should contain at least one figure");
