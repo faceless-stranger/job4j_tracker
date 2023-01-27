@@ -16,21 +16,6 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
 
-        String rsl = password;
-        if (checkLetter(rsl).equals("isNotDigital")) {
-            throw new IllegalArgumentException("Password should contain at least one figure");
-        }
-        if (checkLetter(rsl).equals("isNotSymbol")) {
-            throw new IllegalArgumentException("Password should contain at least one special symbol");
-        }
-        if (validPassword(password)) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
-        }
-
-        return password;
-    }
-
-    public static String checkLetter(String password) {
         boolean isNotDigital = false;
         boolean isNotSymbol = false;
         char[] arrayChar = password.toCharArray();
@@ -43,11 +28,15 @@ public class PasswordValidator {
             }
         }
         if (!isNotDigital) {
-            return "isNotDigital";
+            throw new IllegalArgumentException("Password should contain at least one figure");
         }
         if (!isNotSymbol) {
-            return "isNotSymbol";
+            throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
+        if (validPassword(password)) {
+            throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
+        }
+
         return password;
     }
 
