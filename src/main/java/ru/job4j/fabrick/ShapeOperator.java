@@ -1,4 +1,4 @@
-package ru.job4j.fabricmetod;
+package ru.job4j.fabrick;
 
 public abstract class ShapeOperator {
     public void showInfo() {
@@ -8,8 +8,4 @@ public abstract class ShapeOperator {
     }
 
     public abstract Shape createShape();
-
-    public void name(String name) {
-        System.out.println("hello" + name);
-    }
 }
