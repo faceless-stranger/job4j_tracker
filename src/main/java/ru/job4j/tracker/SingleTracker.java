@@ -32,7 +32,7 @@ public final class SingleTracker {
         return tracker.replace(id, item);
     }
 
-    public List<Integer> findByName(String key) {
+    public List<Item> findByName(String key) {
         return tracker.findByName(key);
     }
 

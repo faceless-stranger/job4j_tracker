@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerTest {
@@ -26,19 +28,19 @@ public class TrackerTest {
         assertThat(result.getName()).isEqualTo(first.getName());
     }
 
-//    @Test
-//    public void whenTestFindByNameCheckSecondItemName() {
-//        Tracker tracker = new Tracker();
-//        Item first = new Item("First");
-//        Item second = new Item("Second");
-//        tracker.add(first);
-//        tracker.add(second);
-//        tracker.add(new Item("First"));
-//        tracker.add(new Item("Second"));
-//        tracker.add(new Item("First"));
-//        List<Integer> result = tracker.findByName(second.getName());
-//        assertThat(result.get(1).getName()).isEqualTo(second.getName());
-//    }
+    @Test
+    public void whenTestFindByNameCheckSecondItemName() {
+        Tracker tracker = new Tracker();
+        Item first = new Item("First");
+        Item second = new Item("Second");
+        tracker.add(first);
+        tracker.add(second);
+        tracker.add(new Item("First"));
+        tracker.add(new Item("Second"));
+        tracker.add(new Item("First"));
+        List<Item> result = tracker.findByName(second.getName());
+        assertThat(result.get(1).getName()).isEqualTo(second.getName());
+    }
 
     @Test
     public void whenReplaceItemIsSuccessful() {
