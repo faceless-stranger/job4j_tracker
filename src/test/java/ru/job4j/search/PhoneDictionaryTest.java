@@ -1,8 +1,9 @@
 package ru.job4j.search;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
-import static org.junit.jupiter.api.Assertions.*;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PhoneDictionaryTest {
@@ -24,6 +25,6 @@ class PhoneDictionaryTest {
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
         ArrayList<Person> persons = phones.find("Jon");
-        assertThat("[]");
+        assertThat(persons.isEmpty()).isTrue();
     }
 }
