@@ -11,8 +11,8 @@ public class UsageMap {
         mail.put("Misha@yandex.ru", "Михаил Михайлович Михайлов");
         mail.put("Masha@yandex.ru", "Мария Семеновна Острова");
         for (Map.Entry<String, String> item : mail.entrySet()) {
-            System.out.println("Почта " + item.getKey() +
-                    " ФИО пользователя " + item.getValue());
+            System.out.println("Почта " + item.getKey()
+                    + " ФИО пользователя " + item.getValue());
         }
     }
 }
