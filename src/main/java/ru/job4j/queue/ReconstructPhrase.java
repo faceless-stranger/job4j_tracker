@@ -1,7 +1,6 @@
 package ru.job4j.queue;
 
 import java.util.Deque;
-import java.util.Iterator;
 
 public class ReconstructPhrase {
 
@@ -16,19 +15,19 @@ public class ReconstructPhrase {
 
     private String getEvenElements() {
         StringBuilder str = new StringBuilder();
-        Iterator iterator = evenElements.iterator();
-        while (iterator.hasNext()) {
-            str.append(iterator.next());
-            iterator.next();
+        int size = evenElements.size();
+        for (int i = 0; i < size; i += 2) {
+            str.append(evenElements.poll());
+            evenElements.poll();
         }
         return String.valueOf(str);
     }
 
     private String getDescendingElements() {
         StringBuilder str = new StringBuilder();
-        Iterator iterator = descendingElements.descendingIterator();
-        while (iterator.hasNext()) {
-            str.append(iterator.next());
+        int size = descendingElements.size();
+        for (int i = 0; i < size; i++) {
+            str.append(descendingElements.pollLast());
         }
         return String.valueOf(str);
     }
