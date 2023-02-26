@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class BankService {
-    private final Map<User, List<Account>> users = new HashMap<>(); //содержит всех пользователей системы с привязанными к ним счетами
+    private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
