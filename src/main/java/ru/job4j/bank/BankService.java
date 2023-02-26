@@ -8,23 +8,15 @@ import java.util.Map;
 public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>(); //содержит всех пользователей системы с привязанными к ним счетами
 
-    public void addUser(User user) { //метод должен добавить пользователя в систему
-        if (user != null && !users.containsKey(user)) {
-            users.put(user, new ArrayList<Account>());
-        }
+    public void addUser(User user) {
+        users.putIfAbsent(user, new ArrayList<Account>());
     }
 
-    public boolean deleteUser(String passport) { //удалить пользователя из системы.
-        boolean rsl = false;
-        User user = findByPassport(passport);
-        if (user != null) {
-            List<Account> result = users.remove(user);
-            rsl = true;
-        }
-        return rsl;
+    public boolean deleteUser(String passport) {
+        return users.remove(new User(passport, "")) != null;
     }
 
-    public void addAccount(String passport, Account account) { //должен добавить новый счет к пользователю
+    public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> list = users.get(user);
@@ -34,7 +26,7 @@ public class BankService {
         }
     }
 
-    public User findByPassport(String passport) { //метод ищет пользователя по номеру паспорта
+    public User findByPassport(String passport) {
         for (User user : users.keySet()) {
             if (passport.equals(user.getPassport())) {
                 return user;
@@ -43,7 +35,7 @@ public class BankService {
         return null;
     }
 
-    public Account findByRequisite(String passport, String requisite) { //ищет счет пользователя по реквизитам
+    public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> list = users.get(user);
