@@ -19,7 +19,6 @@ public class BankServiceTest {
         BankService bank = new BankService();
         bank.addUser(first);
         bank.addUser(second);
-        bank.deleteUser("3434");
         assertThat(bank.deleteUser("3434")).isTrue();
     }
 
