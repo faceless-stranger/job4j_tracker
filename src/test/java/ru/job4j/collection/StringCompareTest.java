@@ -31,7 +31,7 @@ public class StringCompareTest {
                 "Petrov",
                 "Ivanova"
         );
-        assertThat(rst).isGreaterThan(-1);
+        assertThat(rst).isGreaterThan(0);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class StringCompareTest {
                 "Patrova",
                 "Petrov"
         );
-        assertThat(rst).isLessThan(1);
+        assertThat(rst).isLessThan(0);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class StringCompareTest {
                 "Anna",
                 "Bella"
         );
-        assertThat(rst).isLessThan(1);
+        assertThat(rst).isLessThan(0);
     }
 
 }
