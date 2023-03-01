@@ -83,8 +83,8 @@ public class CombinedComporatorJob {
     public void whenUpNameOrUpPriority() {
         Comparator<Job> comb = new JobUpName().thenComparing(new JobUpPriority());
         int rsl = comb.compare(
-                new Job("Alla", 0),
-                new Job("Alla", 0)
+                new Job("Alla", 1),
+                new Job("Alla", 4)
         );
         assertThat(rsl).isLessThan(0);
     }
@@ -93,10 +93,10 @@ public class CombinedComporatorJob {
     public void whenDownNameOrDownPriority() {
         Comparator<Job> comb = new JobDownName().thenComparing(new JobDownPriority());
         int rsl = comb.compare(
-                new Job("Alla", 6),
-                new Job("Alla", 9)
+                new Job("Alla", 3),
+                new Job("Alla", 6)
         );
-        assertThat(rsl).isGreaterThan(-1);
+        assertThat(rsl).isGreaterThan(0);
     }
 
 }
