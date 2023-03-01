@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class СombinedComporatorJob {
+public class CombinedComporatorJob {
 
     @Test
     public void whenJobUpName() {
@@ -83,10 +83,10 @@ public class СombinedComporatorJob {
     public void whenUpNameOrUpPriority() {
         Comparator<Job> comb = new JobUpName().thenComparing(new JobUpPriority());
         int rsl = comb.compare(
-                new Job("Alla", 9),
-                new Job("Alla", 5)
+                new Job("Alla", 0),
+                new Job("Alla", 0)
         );
-        assertThat(rsl).isLessThan(4);
+        assertThat(rsl).isLessThan(0);
     }
 
     @Test
