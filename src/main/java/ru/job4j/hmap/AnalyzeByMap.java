@@ -33,10 +33,8 @@ public class AnalyzeByMap {
         List<Label> list = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject score : pupil.subjects()) {
-                if (cloud.get(score.name()) == null) {
-                    cloud.put(score.name(), 0);
-                }
-                cloud.put(score.name(), cloud.get(score.name()) + score.score());
+                int valueResult = cloud.getOrDefault(score.name(), 0);
+                cloud.put(score.name(), valueResult + score.score());
             }
         }
         for (Map.Entry<String, Integer> map : cloud.entrySet()) {
@@ -63,10 +61,8 @@ public class AnalyzeByMap {
         List<Label> list = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject score : pupil.subjects()) {
-                if (cloud.get(score.name()) == null) {
-                    cloud.put(score.name(), 0);
-                }
-                cloud.put(score.name(), cloud.get(score.name()) + score.score());
+                int valueResult = cloud.getOrDefault(score.name(), 0);
+                cloud.put(score.name(), valueResult + score.score());
             }
             for (Map.Entry<String, Integer> map : cloud.entrySet()) {
                 list.add(new Label(map.getKey(), map.getValue()));
