@@ -2,6 +2,12 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает пользователя банковской системы.
+ * Для equals and hashCode методов используется только поле passport
+ * @author Vlad Koschinsky
+ * @version 1.0
+ */
 public class User {
     private String passport;
     private String username;
