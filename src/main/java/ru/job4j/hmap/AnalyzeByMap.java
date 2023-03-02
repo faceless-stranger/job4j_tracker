@@ -64,9 +64,9 @@ public class AnalyzeByMap {
                 int valueResult = cloud.getOrDefault(score.name(), 0);
                 cloud.put(score.name(), valueResult + score.score());
             }
-            for (Map.Entry<String, Integer> map : cloud.entrySet()) {
-                list.add(new Label(map.getKey(), map.getValue()));
-            }
+        }
+        for (Map.Entry<String, Integer> map : cloud.entrySet()) {
+            list.add(new Label(map.getKey(), map.getValue()));
         }
         Collections.sort(list);
         return list.get(list.size() - 1);
