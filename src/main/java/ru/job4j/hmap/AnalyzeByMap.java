@@ -57,7 +57,7 @@ public class AnalyzeByMap {
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        LinkedHashMap<String, Integer> cloud = new LinkedHashMap<>();
+        HashMap<String, Integer> cloud = new LinkedHashMap<>();
         List<Label> list = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject score : pupil.subjects()) {
