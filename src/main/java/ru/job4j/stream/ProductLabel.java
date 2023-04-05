@@ -13,11 +13,11 @@ public class ProductLabel {
                 new Product("coffee", 75, 120, 30),
                 new Product("potato", 45, 90, 15),
                 new Product("cherry", 150, 10, 8),
-                new Product("watermelon", 70, 7, 7) );
+                new Product("watermelon", 70, 7, 7));
 
         return product.stream()
                 .filter(e -> e.getStandard() - e.getActual() <= 3 && e.getStandard() - e.getActual() >= 0)
-                .map(e -> new Label(e.getName(),e.getPrice() / 2).toString())
+                .map(e -> new Label(e.getName(), e.getPrice() / 2).toString())
                 .collect(Collectors.toList());
     }
 }
