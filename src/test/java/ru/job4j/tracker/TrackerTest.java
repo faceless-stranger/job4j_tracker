@@ -73,4 +73,13 @@ public class TrackerTest {
         tracker.delete(id);
         assertThat(tracker.findById(id)).isNull();
     }
+
+    @Test
+    public void whenDeleteItemIsNotSuccessful() {
+        MemTracker tracker = new MemTracker();
+        Item item = new Item("Bug");
+        tracker.add(item);
+        tracker.delete(1000);
+        assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
+    }
 }

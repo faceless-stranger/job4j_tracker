@@ -124,14 +124,21 @@ public class SqlTracker implements Store {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                item.setName(resultSet.getString("name"));
-                item.setId(resultSet.getInt("id"));
+                item = createItem(resultSet);
             } else {
                 return null;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return item;
+    }
+
+    private Item createItem(ResultSet resultSet) throws SQLException {
+        Item item = new Item();
+        item.setName(resultSet.getString("name"));
+        item.setId(resultSet.getInt("id"));
+        item.setCreated(resultSet.getTimestamp("created").toLocalDateTime());
         return item;
     }
 }
