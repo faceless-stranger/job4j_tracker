@@ -1,4 +1,5 @@
 package ru.job4j.jdbc;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +66,7 @@ public class DebugDemo {
     }
 
     public static void main(String[] args) throws Exception {
-        City first = new City("CityOne", 100);
+        /* City first = new City("CityOne", 100);
         City second = new City("CityTwo", 200);
         DebugDemo debugDemo = new DebugDemo();
         debugDemo.createTable();
@@ -73,7 +74,7 @@ public class DebugDemo {
         debugDemo.insert(second);
         for (City city : debugDemo.findAll()) {
             System.out.println("city = " + city);
-        }
+        }                                                 */
     }
 
 }
