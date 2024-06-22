@@ -1,17 +1,16 @@
-package ru.job4j.tracker.store;
+package ru.job4j.tracker;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.job4j.tracker.Item;
-import ru.job4j.tracker.SqlTracker;
 
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -56,5 +55,70 @@ public class SqlTrackerTest {
         Item item = new Item("item");
         tracker.add(item);
         assertThat(tracker.findById(item.getId())).isEqualTo(item);
+    }
+
+    @Test
+    public void searchForAnAlreadyCreatedItemAndReplaceTheName() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item itemFirst = new Item("item");
+        Item itemSecond = new Item("item2");
+        tracker.add(itemFirst);
+        tracker.replace(itemFirst.getId(), itemSecond);
+        assertThat(tracker.findById(itemFirst.getId()).getName()).isEqualTo(itemSecond.getName());
+    }
+
+    @Test
+    public void deleteItemByIdAndVerifyItsAbsence() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        tracker.delete(item.getId());
+        assertThat(tracker.findById(item.getId())).isNull();
+    }
+
+    @Test
+    public void findAllItemsReturnsAllStoredItems() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item firstItem = new Item("item1");
+        Item secondItem = new Item("item2");
+        tracker.add(firstItem);
+        tracker.add(secondItem);
+        List<Item> foundItems = tracker.findAll();
+        assertThat(foundItems)
+                .hasSize(2)
+                .extracting(Item::getName)
+                .containsExactlyInAnyOrder("item1", "item2");
+    }
+
+    @Test
+    public void findItemsByNameReturnsMatchingItems() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item firstItem = new Item("item");
+        Item secondItem = new Item("item");
+        Item thirdItem = new Item("anotherItem");
+
+        tracker.add(firstItem);
+        tracker.add(secondItem);
+        tracker.add(thirdItem);
+
+        List<Item> foundItems = tracker.findByName("item");
+
+        assertThat(foundItems)
+                .hasSize(2)
+                .extracting(Item::getName)
+                .containsExactlyInAnyOrder("item", "item");
+    }
+
+    @Test
+    public void findByIdReturnsCorrectItem() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item firstItem = new Item("item1");
+        Item secondItem = new Item("item2");
+        tracker.add(firstItem);
+        tracker.add(secondItem);
+        Item foundItem = tracker.findById(firstItem.getId());
+        assertThat(foundItem)
+                .isNotNull()
+                .isEqualTo(firstItem);
     }
 }
