@@ -42,7 +42,7 @@ public class SqlTracker implements Store {
 
     @Override
     public Item add(Item item) {
-        /* Создаем PreparedStatement и отправляем sql запрос. Statement.RETURN_GENERATED_KEYS - это константа, которая указывает JDBC-драйверу возвращать сгенерированные ключи  после выполнения операции вставки данных в базу данных. */
+        /* Создаем PreparedStatement и отправляем sql запрос. Statement.RETURN_GENERATED_KEYS - это константа, которая указывает JDBC-драйверу возвращать сгенерированные ключи после выполнения операции вставки данных в базу данных. */
         try (PreparedStatement pStatement =
                      connection.prepareStatement("INSERT INTO items (name, created) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS)) {
             pStatement.setString(1, item.getName());  /* Устанавливаем имя из объекта Item */

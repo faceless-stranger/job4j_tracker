@@ -36,7 +36,7 @@ public class StartUI {
         Input input = new ValidateInput(
                 output, new ConsoleInput()
         );
-        try (Store tracker = new SqlTracker()) {
+        try (Store tracker = new MemTracker()) {
             List<UserAction> actions = List.of(
                     new CreateAction(output),
                     new EditAction(output),
@@ -44,7 +44,9 @@ public class StartUI {
                     new ShowAllAction(output),
                     new FindByIdAction(output),
                     new FindByNameAction(output),
-                    new ExitAction(output)
+                    new ExitAction(output),
+                    new CreateManyItems(output),
+                    new DeleteAllItems(output)
             );
             new StartUI(output).init(input, tracker, actions);
         } catch (Exception e) {
