@@ -48,8 +48,12 @@ public class Item {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Item item)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Item item)) {
+            return false;
+        }
         return id == item.id && name.equals(item.name) && created.equals(item.created);
     }
 
