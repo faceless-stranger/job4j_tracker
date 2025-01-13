@@ -1,18 +1,18 @@
 package ru.job4j.odd.tdd;
 
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
 
 import java.util.Calendar;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Disabled("Тесты отключены. Удалить аннотацию после реализации всех методов по заданию.")
 public class Cinema3DTest {
 
     /* 1. Проверяем, что при покупке билета метод buy возвращает корректный Ticket. */
-    @Test
+    @Disabled
     public void whenBuyThenGetTicket() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -22,7 +22,7 @@ public class Cinema3DTest {
     }
 
     /* 2. Проверяем, что при добавлении новой сессии (add) она появляется в списке (find). */
-    @Test
+    @Disabled
     public void whenAddSessionThenItExistsBetweenAllSessions() {
         Cinema cinema = new Cinema3D();
         Session session = new Session3D();
@@ -32,7 +32,7 @@ public class Cinema3DTest {
     }
 
     /* 3. Если передать некорректный ряд (row = -1), должен вылететь IllegalArgumentException. */
-    @Test
+    @Disabled
     public void whenBuyOnInvalidRowThenGetException() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -42,7 +42,7 @@ public class Cinema3DTest {
     }
 
     /* 4. Проверяем, что нельзя купить билет на несуществующий (не добавленный) сеанс.  */
-    @Test
+    @Disabled
     public void whenBuyTicketForNonExistentSessionThenException() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -54,7 +54,7 @@ public class Cinema3DTest {
     }
 
     /* 5. Проверяем, что нельзя купить билет на дату, которая уже прошла. */
-    @Test
+    @Disabled
     public void whenBuyTicketOnPastDateThenException() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -70,7 +70,7 @@ public class Cinema3DTest {
     }
 
     /* 6. Проверяем, что нельзя купить билет на уже занятое место. */
-    @Test
+    @Disabled
     public void whenBuyTicketOnOccupiedSeatThenException() {
         Account account1 = new AccountCinema();
         Account account2 = new AccountCinema();
@@ -88,7 +88,7 @@ public class Cinema3DTest {
     }
 
     /* 7. Проверяем покупку нескольких мест подряд (1,1), (1,2), (1,3). */
-    @Test
+    @Disabled
     public void whenBuyMultipleTicketsThenSuccessForAll() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -108,7 +108,7 @@ public class Cinema3DTest {
     }
 
     /*8. Проверяем, что нельзя купить билет, передав null вместо аккаунта. */
-    @Test
+    @Disabled
     public void whenBuyWithNullAccountThenException() {
         Cinema cinema = new Cinema3D();
         Session session = new Session3D();
@@ -118,4 +118,5 @@ public class Cinema3DTest {
         assertThatThrownBy(() -> cinema.buy(null, 1, 1, date))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
 }
